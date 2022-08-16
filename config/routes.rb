@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  
+  
   namespace :admin do
     get 'orders/show'
   end
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
     get 'items/edit'
   end
   namespace :admin do
-    get 'homes/top'
+    root to: 'homes#top'
   end
   namespace :public do
     get 'addresses/index'
@@ -34,8 +37,7 @@ Rails.application.routes.draw do
     get 'cart_items/index'
   end
   namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers
     get 'customers/unsubcribe'
   end
   namespace :public do
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
     get 'items/show'
   end
   namespace :public do
-    get 'homes/top'
+    root to: 'homes#top'
     get 'homes/about'
   end
  # 顧客用
