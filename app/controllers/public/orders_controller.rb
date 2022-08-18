@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  layout 'public/layouts/application'  #layoutを宣言
   def new
   end
 

@@ -2,6 +2,7 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  layout 'public/layouts/application'  #layoutを宣言
 
   protected
 

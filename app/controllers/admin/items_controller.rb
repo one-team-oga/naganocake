@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  layout 'admin/layouts/application'  #layoutを宣言
+  
   def index
   end
 
@@ -10,4 +12,5 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
+  
 end

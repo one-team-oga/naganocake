@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
-
+  layout 'public/layouts/application'  #layoutを宣言
   # GET /resource/sign_in
   # def new
   #   super
@@ -24,11 +24,11 @@ class Public::SessionsController < Devise::SessionsController
     ##[処理内容１]入力されたemailからアカウントを１件取得
     @customer = Customer.find_by(email: params[:customer][:email])
     ##アカウントを取得できなかった場合、このメソッドを終了する
-    return if!@customer
+    return if !@customer
     ##[処理内容２]取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
-    if @customer.valid_password?(params[:customer][:password]) && !@user.is_deleted
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
        ##[処理内容３]
-       redirect_to new_customer_registration
+       redirect_to new_customer_registration_path
     end
   end
 

@@ -1,53 +1,63 @@
 Rails.application.routes.draw do
   
+  root to: 'public/homes#top'
   
+  namespace :admin do
+    resources :orders, only: [:show,:update]
+  end
   
   namespace :admin do
-    get 'orders/show'
+    resources :ordering_details, only: [:update]
   end
+  
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers, only: [:index,:show,:edit,:update]
   end
+  
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    resources :genres, only: [:index,:create,:edit,:update]
   end
+  
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :items, only: [:index,:new,:show,:edit,:create,:update]
   end
+  
   namespace :admin do
     root to: 'homes#top'
   end
+  
   namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
+    resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   end
+  
   namespace :public do
-    get 'orders/new'
+    resources :orders, only: [:new,:index,:show,:create]
+    post '/orders/confirm' => 'orders#confirm'
     get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
   end
+  
   namespace :public do
-    get 'cart_items/index'
+    resources :cart_items, only: [:index,:update,:destroy,:create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
+  
   namespace :public do
-    resources :customers
-    get 'customers/unsubcribe'
+    get 'customers/my_page' => 'customers#show', as: 'my_page'
+    get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
+    patch  'customers/infomation' => 'customers#update', as: 'information_update'
+    get 'customers/unsubcribe' => 'customers#unsubcribe'
+    get 'customers/withdraw' => 'customers#withdrow'
   end
+  
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :items, only: [:index,:show]
   end
+  
   namespace :public do
     root to: 'homes#top'
-    get 'homes/about'
+    get 'homes/about' => 'homes#about', as: 'about'
   end
+  
  # 顧客用
  # URL /customers/sign_in ...
  devise_for :customers, skip: [:passwords], controllers: {
