@@ -2,7 +2,6 @@ class Admin::ItemsController < ApplicationController
   layout 'admin/layouts/application'  #layoutを宣言
 
   def index
-    @item = Item.find(params[:id])
     @items = Item.all
   end
 

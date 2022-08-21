@@ -1,2 +1,44 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.genres-index-title, .genres-edit-title, .item-new-title {
+    padding: 5px;
+    margin: 30px 0 30px 120px;
+    background-color: #CCCCCC;
+}
+
+.title {
+    display: inline-block;
+    
+}
+
+.genre-form {
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 200px;
+  font-size: 18px;
+  margin: 20px;
+  text-align: left;
+}
+
+table th {
+  color: black;
+  padding: 10px;
+  border-bottom: 3px solid #174a5c;
+}
+
+table td {
+  padding: 5px;
+  color: black;
+  border-bottom: 1px solid gray;
+}
