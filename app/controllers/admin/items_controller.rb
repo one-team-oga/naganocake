@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   layout 'admin/layouts/application'  #layoutを宣言
 
-  def index
+  def index 
     @items = Item.all
   end
 
