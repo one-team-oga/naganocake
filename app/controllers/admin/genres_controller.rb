@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
     redirect_to admin_genres_path
   end
   
-  def index
+  def index 
     @genre = Genre.new
     @genres = Genre.all
   end
