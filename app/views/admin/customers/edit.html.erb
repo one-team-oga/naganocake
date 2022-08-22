@@ -1,2 +1,55 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<%= @customer.first_name + @customer.last_name %>の会員情報編集
+
+
+ <div class="field">
+    会員ID
+    <%= @customer.id %>
+ </div>
+
+<%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+
+  <div class="form-group">
+    <%= f.label :first_name, "氏名" %>
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
+    <%= f.text_field :last_name, autocomplete: "last_name" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :first_name_kana, "フリガナ" %>
+    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :postal_code, "郵便番号" %>
+    <%= f.number_field :postal_code, autocomplete: "postal_code" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address,autocomplete: "address" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :telephone_number, "電話番号" %>
+    <%= f.number_field :telephone_number, autocomplete: "telephone_number" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+  
+  <div class="form-group">
+        <%= f.label :is_active, "会員ステータス" %>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit '変更を保存',class: "btn btn-success" %>
+  </div>
+<% end %>
