@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   layout 'admin/layouts/application'  #layoutを宣言
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def new

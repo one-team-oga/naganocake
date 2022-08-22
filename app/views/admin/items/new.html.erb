@@ -28,7 +28,6 @@
             <%= f.label :price, "税抜価格" %>
             <%= f.number_field :price %> 円
         </div>
-    </div>
     
         <div class="col-sm-9">
             <%= f.label :is_active, "販売ステータス" %>
@@ -37,8 +36,7 @@
             <%= f.radio_button :is_active, :false %>
             <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
         </div>
-    </div>
-    
+
         <%= f.submit '新規登録',class: "btn btn-success" %>
         
 <% end %>
