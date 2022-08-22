@@ -2,6 +2,7 @@ class Admin::CustomersController < ApplicationController
   layout 'admin/layouts/application'  #layoutを宣言
   
   def index
+    @customers = Customer.page(params[:page])
   end
 
   def show
