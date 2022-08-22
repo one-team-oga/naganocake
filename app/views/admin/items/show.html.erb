@@ -30,6 +30,9 @@
                 販売ステータス
                 <%= @is_active %>
             </div>
+            <div class="">
+                <%= link_to '編集する', edit_admin_item_path(@item.id),  class: "btn btn-success" %>
+            </div>
         </div>
     </div>
 </div>
