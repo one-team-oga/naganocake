@@ -60,3 +60,5 @@ gem 'devise'
 gem 'net-smtp'
 
 gem 'pry-rails'
+
+gem "enum_help"
