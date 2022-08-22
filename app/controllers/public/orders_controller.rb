@@ -7,8 +7,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+     @ordering_details = OrderingDetail.page(params[:page])
   end
 
   def show
+    
   end
 end

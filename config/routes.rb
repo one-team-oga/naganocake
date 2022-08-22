@@ -26,38 +26,34 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
   
-  namespace :public do
+  scope module: :public do
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   end
   
-  namespace :public do
+  scope module: :public do
     resources :orders, only: [:new,:index,:show,:create]
     post '/orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
   end
-  
-  namespace :public do
+
+  scope module: :public do
     resources :cart_items, only: [:index,:update,:destroy,:create]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
-  
-  namespace :public do
-    get 'customers/my_page' => 'customers#show', as: 'my_page'
-    get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
-    patch  'customers/infomation' => 'customers#update', as: 'information_update'
-    get 'customers/unsubcribe' => 'customers#unsubcribe'
-    get 'customers/withdraw' => 'customers#withdrow'
-  end
-  
-  namespace :public do
-    resources :items, only: [:index,:show]
-  end
-  
-  namespace :public do
-    root to: 'homes#top'
-    get 'homes/about' => 'homes#about', as: 'about'
-  end
-  
+
+    get 'customers/my_page' => 'public/customers#show', as: 'my_page'
+    get 'customers/information/edit' => 'public/customers#edit', as: 'information_edit'
+    patch  'customers/infomation' => 'public/customers#update', as: 'information_update'
+    get 'customers/unsubcribe' => 'public/customers#unsubcribe'
+    get 'customers/withdraw' => 'public/customers#withdrow'
+   
+   scope module: :public do
+   resources :items, only: [:index,:show]
+   end
+    
+
+    get 'homes/about' => 'public/homes#about', as: 'about'
+
  # 顧客用
  # URL /customers/sign_in ...
  devise_for :customers, skip: [:passwords], controllers: {
