@@ -1,0 +1,47 @@
+<div class="title">
+    <h4 class="item-index-title">商品一覧</h4>
+</div>
+
+<%= link_to new_admin_item_path do %>
+    <i class="fas fa-plus-circle fa-2x" style="color: gainsboro;"></i>
+<% end %>
+
+<table class="table">
+    <thead bgcolor="#DDDDDD">
+     <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+     </tr>
+    </thead>
+    
+    <tbody>
+     <% @items.each do |item| %>
+     <tr>
+        <td>
+            <%= item.id %>
+        </td>
+        <td>
+            <%= item.name %>
+        </td>
+        <td>
+            <%= item.price.to_s(:delimited) %>
+        </td>
+        <td>
+            <%= item.genre.name %>
+        </td>
+        
+        <% if item.is_active == true %>
+            <td>販売中</td>
+        <% else %>
+            <td>販売停止中</td>
+    　　<% end %>
+    　　
+     </tr>
+     <% end %>
+    </tbody>
+</table>
+
+    <%= paginate @items %>
