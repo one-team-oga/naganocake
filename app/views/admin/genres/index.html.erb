@@ -10,8 +10,7 @@
         <% end %>
 </div>
 
-<div class="genre-index">
-<table class="table">
+<table class="table table-sm">
     <thead  bgcolor="#DDDDDD">
         <tr align="center">
             <th>ジャンル</th>
@@ -24,8 +23,7 @@
         <tr>
         <td><%= genre.name %></td>
         <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
-        <% end %>
         </tr>
+        <% end %>
     </tbody>
 </table>
-</div>
