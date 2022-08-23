@@ -1,8 +1,16 @@
 class Public::ItemsController < ApplicationController
   layout 'public/layouts/application'  #layoutを宣言
   def index
+    @items = Item.page(params[:page]).per(8)
   end
 
+
   def show
+    @item = Item.find(params[:id])
+  end
+  
+  private
+  def item_params
+    params.require(:item).permit(:name,:introduction,:price,:genre_id,:is_active)
   end
 end
