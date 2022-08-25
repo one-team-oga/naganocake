@@ -10,19 +10,19 @@
     </thead>
     
     <tbody>
-        <% @ordering_details.each do |ordering_detail| %>
+        <% @orders.each do |order| %>
             <tr>
                 <td>
-                 <%= link_to admin_order_path(ordering_detail.order_id) do %>
-                    <%= ordering_detail.created_at %>
+                 <%= link_to admin_order_path(order_id) do %>
+                    <%= order.created_at %>
                  <% end %>
                 </td>
-                <td><%= ordering_detail.customer.first_name %></td>
-                <td><%= ordering_detail.amount %></td>
-                <td><%= ordering_detail.production_status %></td>
+                <td><%= order.customer.first_name %></td>
+                <td><%= order.amount %></td>
+                <td><%= order.production_status %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-<%= paginate @ordering_details %>
+<%= paginate @orders %>
