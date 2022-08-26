@@ -1,6 +1,12 @@
-注文履歴一覧
-<table class="table">
-    <thead>
+<div class="page_title mb-3">
+    <div class="font_title mb-4 pr-3 pl-3">
+        注文履歴一覧
+    </div>
+</div>
+
+<div class="container m-10">
+<table class="table" border="2" rules="rows" frame="hsides" bordercolor="silver">
+    <thead bgcolor="#DDDDDD">
         <tr>
             <th>購入日時</th>
             <th>購入者</th>
@@ -13,16 +19,17 @@
         <% @orders.each do |order| %>
             <tr>
                 <td>
-                 <%= link_to admin_order_path(order_id) do %>
+                 <%= link_to admin_order_path(order.id) do %>
                     <%= order.created_at %>
                  <% end %>
                 </td>
-                <td><%= order.customer.first_name %></td>
-                <td><%= order.amount %></td>
-                <td><%= order.production_status %></td>
+                <td><%= order.customer.first_name + order.customer.last_name %></td>
+                <td></td>
+                <td><%= order.order_status %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
 <%= paginate @orders %>
+</div>

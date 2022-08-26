@@ -1,44 +1,44 @@
-<div class="title">
-    <h4 class="item-new-title">商品新規登録</h4>
+<div class="page_title mb-3">
+    <div class="font_title mb-4 pr-3 pl-3">
+        商品新規登録
+    </div>
 </div>
 
-<div class="form-group" >
-<%= form_with model:@item, url: admin_items_path, method: :post, local: true do |f| %>
-        <div class="col-sm-9">
-            <%= f.label :image, "商品画像" %>
-            <%= f.file_field :image,  accept: "image/*" %> 
-        </div>
+<div style="text-align: center" class="w-50% mt-3">
+    <div class="form-group d-inline-block" style="text-align: left">
 
-        <div class="col-sm-9">
-            <%= f.label :name, "商品名" %>
-            <%= f.text_field :name %> 
+        <%= form_with model:@item, url: admin_items_path, method: :post, local: true do |f| %>
+        <div class="form-group">
+            <%= f.label :image, "商品画像　　　　" %>
+            <%= f.file_field :image, accept: "image/*" %> 
         </div>
-
-        <div class="col-sm-9">
-            <%= f.label :intruduvtion, "商品説明" %>
-            <%= f.text_area :introduction %> 
+        <div class="form-group">
+            <%= f.label :name, "商品名　　　　　" %>
+            <%= f.text_field :name, :size=>"30" %> 
+        </div>    
+        <div class="form-group">
+            <%= f.label :intruduction, "商品説明　　　　", class: "item-introduction-label" %>
+            <%= f.text_area :introduction, size: "30x5" %> 
         </div>
-
-        <div class="col-sm-9">
-            <%= f.label :genre_id, "ジャンル" %>
-            <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, include_blank: '選択してください' %>
+        <div class="form-group">
+            <%= f.label :genre_id, "ジャンル　　　　" %>
+            <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, include_blank: '--選択してください--　　　　　　' %>
         </div>
-        
-        <div class="col-sm-9">
-            <%= f.label :price, "税抜価格" %>
-            <%= f.number_field :price %> 円
+        <div class="form-group">
+            <%= f.label :price, "税抜価格　　　　" %>
+            <%= f.text_field :price, :size=>"31" %> 円
         </div>
-    
-        <div class="col-sm-9">
-            <%= f.label :is_active, "販売ステータス" %>
+        <div class="form-group m-0">
+            <%= f.label :is_active, "販売ステータス　" %>
             <%= f.radio_button :is_active, :true %>
-            <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+            <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;", class: "mr-3"} %>
             <%= f.radio_button :is_active, :false %>
             <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
         </div>
-
-        <%= f.submit '新規登録',class: "btn btn-success" %>
-        
-<% end %>
+    </div>
 </div>
+    <div style="text-align: center">
+            <%= f.submit '　　新規登録　　',class: "btn btn-success mb-4" %>
+    </div>
+        <% end %>
     

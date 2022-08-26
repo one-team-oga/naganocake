@@ -1,16 +1,19 @@
-<div class="title"> 
-    <h4 class="genres-index-title">ジャンル一覧・追加</h4>
+<div class="page_title mb-3">
+    <div class="font_title mb-4 pr-3 pl-3">
+        ジャンル一覧・追加
+    </div>
 </div>
 
-<div class="form-group mx-auto">
+<div class="form-group　d-flex">
         <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
-            <%= f.label :ジャンル名, class: "genre-form" %>
+            <%= f.label :ジャンル名, class: "m-5" %>
             <%= f.text_field :name, class: "genre-form" %>
-            <%= f.submit '新規登録',class: "btn btn-success genre-form" %>
+            <%= f.submit '新規登録',class: "btn btn-success ml-5" %>
         <% end %>
 </div>
 
-<table class="table table-sm">
+<div class="container m-10">
+<table class="table">
     <thead  bgcolor="#DDDDDD">
         <tr align="center">
             <th>ジャンル</th>
@@ -27,3 +30,4 @@
         <% end %>
     </tbody>
 </table>
+</div>

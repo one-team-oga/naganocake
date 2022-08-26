@@ -1,38 +1,42 @@
-<h4>商品詳細</h4>
+<div class="page_title mb-5">
+    <div class="font_title mb-4 pr-3 pl-3">
+        商品詳細
+    </div>
+</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-4">
+
+<div class="container d-flex">
+        <div class="col-4 mt-10">
             <% if @item.image.attached? %>
-                <%= image_tag @item.image, size: "200x200" %>
+                <%= image_tag @item.image, size: "300x200" %>
             <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
+                <%= image_tag 'no_image', size: "300x200" %>
             <% end %>
         </div>
-        <div class="col-8 mr-3">
-            <div class="">
-                商品名
-                <%= @item.name %>
+        <div class="col-8 m-3">
+            <div>
+                <p class="fw-border">商品名　　　　　 　 <%= @item.name %></p>
             </div>
             <div class="">
-                商品説明
-                <%= @item.introduction %>
+                <p class="fw-border">商品説明　　　　 　 <%= @item.introduction %></p>
+                
             </div>
             <div class="">
-                ジャンル
-                <%= @item.genre.name %>
+                <p>ジャンル　　　　 　 <%= @item.genre.name %></p>
+                
             </div>
-            <div class="">
-                税込価格（税抜価格）
-                <%= @item.price.to_s(:delimited) %> (<%= @item.add_tax_price.to_s(:delimited) %>)円
+            <div class="d-flex">
+                <p class="mr-5 fw-border">税込価格</br>（税抜価格）</p>
+                <p class="ml-2 fw-border"><%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</p>
+                
             </div>
-            <div class="">
-                販売ステータス
-                <%= @is_active %>
-            </div>
-            <div class="">
-                <%= link_to '編集する', edit_admin_item_path(@item.id),  class: "btn btn-success" %>
+            <div class="d-flex">
+                <p class="mr-5 fw-border">販売ステータス</p>
+                <p class="order_status"><%= @is_active %></p>
             </div>
         </div>
-    </div>
+</div>
+
+<div style="text-align: center">
+                <%= link_to '編集する', edit_admin_item_path(@item.id),  class: "btn btn-success pl-4 pr-4" %>
 </div>

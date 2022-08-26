@@ -1,27 +1,26 @@
 <%= render "admin/shared/links" %>
 
-<div class="container">
-  <div class="position-relative">
-    <div class="position-absolute top-50 start-50">
-      <h4>管理者ログイン</h4>
+<div class="page_title mb-3">
+    <div class="font_title mb-4 pr-3 pl-3">
+        管理者ログイン
     </div>
-  </div>
+</div>
 
-　<div class="mx-auto" style="width:300px;">
+　<div style="text-align: center" style="width:600px;">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="form-group mt-3">
+        <%= f.label :email, "メールアドレス　　" %>
+        <%= f.email_field :email, :size=>"40", autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="field">
-        <%= f.label :パスワード %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+      <div class="form-group">
+        <%= f.label :password, "パスワード　　　　" %>
+        <%= f.password_field :password, :size=>"40", autocomplete: "current-password" %>
       </div>
-
-      <div class="actions">
-        <%= f.submit "ログイン", class: "btn btn-sm btn-primary" %>
+  </div>
+      <div style="text-align: center"  class="actions">
+        <%= f.submit "　　ログイン　　", class: "btn btn-sm btn-primary" %>
       </div>
     <% end %>
-  </div>
-</div>
+  
+

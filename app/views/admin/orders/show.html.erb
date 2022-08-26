@@ -1,23 +1,30 @@
-注文履歴詳細
-<div class="container">
-    <div class="row">
-        購入者
-        <%= @order.customer_id.first_name + @order.customer_id.last_name %>
+<div class="page_title">
+    <div class="font_title mb-4">
+        注文履歴詳細
     </div>
-    <div class="row">
-        注文日
+</div>
+
+<div class="container m-3">
+    <div class="row m-3">
+        <div class="font-weight-bold">　　購入者　　　　　　</div>
+        <%= link_to orders_path do %>
+        <%= @order.customer.first_name + @order.customer.last_name %>
+        <% end %>
+    </div>
+    <div class="row m-3">
+        <div class="font-weight-bold">　　注文日　　　　　　</div>
         <%= @order.created_at %>
     </div>
-    <div class="row">
-        配送先
+    <div class="row m-3">
+       <div class="font-weight-bold">　　配送先　　　　　　</div>
         <%= @order.delivery_address %>
     </div>
-    <div class="row">
-        支払方法
+    <div class="row m-3">
+        <div class="font-weight-bold">　　支払方法　　　　　</div>
         <%= @order.payment %>
     </div>
-     <div class="row">
-        注文ステータス
+     <div class="row m-3">
+        <div class="font-weight-bold">　　注文ステータス　　</div>
         <%= @order.order_status%>
     </div>
     

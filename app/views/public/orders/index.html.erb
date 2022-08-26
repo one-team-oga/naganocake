@@ -1,7 +1,12 @@
-<%= %>さんの注文履歴
+<div class="page_title mb-3">
+    <div class="font_title mb-4">
+        <%= %>さんの注文履歴
+    </div>
+</div>
 
-<table class="table">
-    <thead>
+<div class="container m-10">
+<table class="table" border="2" rules="rows" frame="hsides" bordercolor="silver">
+    <thead bgcolor="#DDDDDD">
         <tr>
             <th>購入日時</th>
             <th>注文個数</th>
@@ -10,18 +15,19 @@
     </thead>
     
     <tbody>
-        <% @ordering_details.each do |ordering_detail| %>
+        <% @orders.each do |order| %>
             <tr>
                 <td>
-                    <%= link_to admin_order_path(ordering_detail.order_id) do %>
-                        <%= ordering_detail.created_at %>
+                    <%= link_to admin_order_path(order.id) do %>
+                        <%= order.created_at %>
                     <% end %>
                 </td>
-                <td><%= ordering_detail.amount %></td>
-                <td><%= ordering_detail.production_status %></td>
+                <td></td>
+                <td><%= order.order_status %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-<%= paginate  @ordering_details %>
+<%= paginate  @orders %>
+</div>

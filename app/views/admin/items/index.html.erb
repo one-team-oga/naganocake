@@ -1,12 +1,19 @@
-<div class="title">
-    <h4 class="item-index-title">商品一覧</h4>
+<div class="conatiner">
+    <div class="page_title mb-3 d-inline-block">
+        <div class="font_title pr-3 pl-3">
+           <p>商品一覧</p>
+    </div>
 </div>
 
-<%= link_to new_admin_item_path do %>
-    <i class="fas fa-plus-circle fa-2x" style="color: gainsboro;"></i>
-<% end %>
+    <div class="new_item_icon">
+        <%= link_to new_admin_item_path do %>
+            <i class="fas fa-plus-circle fa-2x" style="color: gainsboro;"></i>
+        <% end %>
+    </div>
+</div>
 
-<table class="table">
+<div class="container m-10">
+<table class="table" border="2" rules="rows" frame="hsides" bordercolor="silver">
     <thead bgcolor="#DDDDDD">
      <tr>
         <th>商品ID</th>
@@ -36,14 +43,15 @@
         </td>
         
         <% if item.is_active == true %>
-            <td>販売中</td>
+            <td class="now_on_sale">販売中</td>
         <% else %>
-            <td>販売停止中</td>
+            <td class="sold_out">販売停止中</td>
     　　<% end %>
     　　
      </tr>
      <% end %>
     </tbody>
 </table>
+</div>
 
-    <%= paginate @items %>
+            <%= paginate @items, theme: 'bootstrap-5' %>

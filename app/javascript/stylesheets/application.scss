@@ -13,16 +13,53 @@
     background-color: #CCCCCC;
 }
 
-.title {
+.page_title {
     display: inline-block;
-    
+    position: relative; top:25px; left:160px 
 }
 
-.genre-form {
-    margin-left: 30px;
-    margin-bottom: 30px;
+.new_item_icon {
+    display: inline-block;
+    position: absolute; top:120px; right:110px 
+}
+
+.font_title {
+    font-size: 18px;
+    background-color: #DDDDDD;
+}
+
+.item-introduction-label {
+    vertical-align: top;
+}
+
+.fw-border {
+    font-weight: bolder;
+}
+
+.order_status {
+    color: #32CD32;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.now_on_sale, .validity{
+     color: #32CD32;
+     font-weight: bolder;
+}
+
+.sold_out, .withdraw {
+    color: #D3D3D3;
+    font-weight: bolder;
 }
 
 .about {
     font-size: 50px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.customer_show_btn {
+    margin-left: 180px;
 }
