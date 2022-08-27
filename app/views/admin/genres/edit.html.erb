@@ -1,11 +1,13 @@
-<div class="genre-title">
-        <h4 class="genres-edit-title">ジャンル編集</h4>
+<div class="page_title mb-3">
+    <div class="font_title pr-3 pl-3">
+        ジャンル編集
+    </div>
 </div>
 
-<div class="form-group">
-<%= form_with model: @genre, url:admin_genre_path, method: :patch, local: true do |f| %>
-        <%= f.label :ジャンル名, class: "genre-form" %>
-        <%= f.text_field :name, class: "genre-form" %> 
-        <%= f.submit "変更を保存", class: "btn btn-success genre-form" %>
-<% end %>
+<div class="form-group　d-flex ml-5">
+        <%= form_with model: @genre, url:admin_genre_path, method: :patch, local: true do |f| %>
+                <%= f.label :ジャンル名, class: "mr-5 mt-5 mb-5 ml-3" %>
+                <%= f.text_field :name, class: "genre-form" %> 
+                <%= f.submit "　変更を保存　", class: "btn btn-success ml-5" %>
+        <% end %>
 </div>

@@ -1,11 +1,11 @@
-<div class="conatiner">
+<div class="conatiner ml-5">
     <div class="ml-5 mt-4 d-inline-block">
         <div class="font_title pr-3 pl-3">
            <p><%= @customer.first_name + @customer.last_name %>さんの会員詳細</p>
     </div>
 </div>
 
-<div class="container m-3">
+<div class="container ml-3">
         <div class="row m-3">
             <div class="font-weight-bold">会員ID　　　　　　</div>
             <%= @customer.id %>
@@ -37,9 +37,13 @@
         <div class="row m-3">
             <div class="font-weight-bold">会員ステータス　　</div>
                 <% if @customer.is_deleted == false %>
-                    <td class="validity">有効</td>
+                <div class="validity">
+                    <td>有効</td>
+                </div>
                 <% else %>
-                    <td class="withdraw">退会</td>
+                <div class="withdraw">
+                    <td >退会</td>
+                </div>
     　　          <% end %>
         </div>
 </div>
