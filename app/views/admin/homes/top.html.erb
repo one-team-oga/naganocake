@@ -24,7 +24,7 @@
                  <% end %>
                 </td>
                 <td><%= order.customer.first_name + order.customer.last_name %></td>
-                <td></td>
+                <td><%= @cart_item_amount %></td>
                 <td><%= order.order_status_i18n %></td>
             </tr>
         <% end %>

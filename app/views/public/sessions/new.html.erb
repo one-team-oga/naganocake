@@ -1,26 +1,37 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="page_title mb-3">
+    <div class="font_title mb-4 pr-3 pl-3">
+        ログイン
     </div>
-  <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+<div class="container">
+<div class="login_message">
+    <div class="pb-0 pr-2 pl-2 ">会員の方はこちらからログイン</div>
   </div>
-<% end %>
+</div>
+　<div style="text-align: center" style="width:600px;">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group mt-3">
+        <%= f.label :email, "メールアドレス　　  " %>
+        <%= f.email_field :email, :size=>"40", autofocus: true, autocomplete: "email", class: "ml-4" %>
+      </div>
 
-<%= render "public/shared/links" %>
+      <div class="form-group">
+        <%= f.label :password, "パスワード　　　　  " %>
+        <%= f.password_field :password, :size=>"40", autocomplete: "current-password", class: "ml-4" %>
+      </div>
+  </div>
+      <div style="text-align: center"  class="actions">
+        <%= f.submit "　　ログイン　　", class: "btn btn-sm btn-primary mr-5" %>
+      </div>
+    <% end %>
+    
+  <div class="container">
+    <div class="login_message">
+      <div class="pb-0 pr-2 pl-2 ">会員登録がお済みでない方</div>
+    </div>
+  </div>
+
+<div class="sign_up_message">
+  <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください</p>
+</div>

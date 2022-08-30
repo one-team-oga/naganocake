@@ -18,6 +18,16 @@
     position: relative; top:25px; left:160px 
 }
 
+.login_message {
+    display: inline-block;
+    margin: 5px 0 5px 50px;
+    background-color: #DDDDDD;
+}
+
+.sign_up_message {
+    margin: 5px 0 0 250px;
+}
+
 .new_item_icon {
     display: inline-block;
     position: absolute; top:120px; right:110px 
