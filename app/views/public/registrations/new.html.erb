@@ -1,64 +1,72 @@
-<h2>Sign up</h2>
+<div class="page_title mb-3">
+    <div class="font_title mb-4 pr-3 pl-3">
+        新規会員登録
+    </div>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
+    <div class="container m-5">
+      <div class="form-group">
+        <%= f.label :first_name, "名前　　　　　　　　　　　" %>
+        <%= f.label :first_name, "(姓)" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        <%= f.label :last_name, "（名）" %>
+        <%= f.text_field :last_name, autocomplete: "last_name" %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.label :first_name_kana, "フリガナ　　　　　　　" %>
+        <%= f.label :first_name_kana, "（セイ）" %>
+        <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+        <%= f.label :last_name_kana, "（メイ）" %>
+        <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス　　　　　　　　" %>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.label :postal_code, "郵便番号（ハイフンなし）　　　" %>
+        <%= f.number_field :postal_code, autocomplete: "postal_code" %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.label :address, "住所　　　　　　　　　　　　　" %>
+        <%= f.text_field :address,autocomplete: "address" %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.label :telephone_number, "電話番号（ハイフンなし）　　　" %>
+        <%= f.number_field :telephone_number, autocomplete: "telephone_number" %>
+      </div>
 
- <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, autocomplete: "last_name" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :first_name_kana %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :last_name_kana %>
-    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :postal_code %>
-    <%= f.number_field :postal_code, autocomplete: "postal_code" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address,autocomplete: "address" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :telephone_number %>
-    <%= f.number_field :telephone_number, autocomplete: "telephone_number" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password, "パスワード（６文字以上）　　　" %>
+        <% if @minimum_password_length %>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "パスワード（確認用）　　　　　" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
+      <div class="actions">
+        <%= f.submit "新規登録", class: "btn btn-success pr-5 pl-5 ml-5" %>
+      </div>
+    </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<div class="container">
+    <div class="login_message">
+      <div class="pb-0 pr-2 pl-2 ">既に登録済みの方</div>
+    </div>
+  </div>
+  
+<div class="sign_up_message">
+  <p><%= link_to "こちら",  customer_session_path %>からログインをしてください</p>
+</div>
