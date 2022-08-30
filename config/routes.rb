@@ -31,14 +31,16 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    resources :orders, only: [:new,:index,:show,:create]
-    post '/orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
+    post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:new,:index,:show,:create]
+    
+    
   end
 
   scope module: :public do
-    resources :cart_items, only: [:index,:update,:destroy,:create]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index,:update,:destroy,:create]
   end
 
     get 'customers/my_page' => 'public/customers#show', as: 'my_page'

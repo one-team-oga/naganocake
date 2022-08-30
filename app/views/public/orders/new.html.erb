@@ -6,7 +6,7 @@
 
 <div class="container m-3">
     <div class="row m-3">
-    <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
 
         <div class="font-weight-bold">　　支払い方法　　　　　　</div>
         <%= f.radio_button :payment, Order.payments.key(0) %>
@@ -32,6 +32,6 @@
         <%= f.label :delivery_name, "宛名" %>
         <%= f.text_field :delivery_name %></br>
 
-    <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
-     <% end %>
+        <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+    <% end %>
 </div>

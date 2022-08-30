@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_08_19_132113) do
     t.string "delivery_address", null: false
     t.string "delivery_name", null: false
     t.integer "postage", null: false
-    t.integer "total_amount_of_products", null: false
+    t.integer "total_payment", null: false
     t.integer "payment", default: 0, null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
