@@ -17,7 +17,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
       redirect_to cart_items_path
     # もしカート内に「同じ」商品がない場合は通常の保存処理 
-    else @cart_item.save
+    elsif @cart_item.save
           @cart_items = current_customer.cart_items.all
           render :index
     end

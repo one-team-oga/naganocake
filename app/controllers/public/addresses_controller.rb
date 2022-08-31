@@ -1,15 +1,16 @@
 class Public::AddressesController < ApplicationController
   layout 'public/layouts/application'  #layoutを宣言
   def index
-    @addresses = Address.all
     @address = Address.new
     @customer = current_customer
+    @addresses = current_customer.addresses
   end
   
   def create
     @address = Address.new(address_params)
-    @addresses = Address.all
     @customer = current_customer
+    @addresses = current_customer.addresses
+    
     if @address.save
       redirect_to addresses_path
     else

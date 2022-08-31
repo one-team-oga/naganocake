@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
   def new
     @customer = current_customer
     @order = Order.new
+    @addresses = @customer.addresses
   end
 
   def complete
@@ -10,10 +11,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page])
+    @orders = current_customer.orders.page(params[:page])
   end
 
   def show
+    @order = Order.find(params[:id])
     
   end
   

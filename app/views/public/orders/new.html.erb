@@ -30,7 +30,7 @@
         <%= "　" + current_customer.first_name + current_customer.last_name %></br>
         <%= f.radio_button :address_number, 1 %>
         <%= f.label :addrsess_number_1, "登録済み住所から選択" %></br>
-        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></br>
+        <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %></br>
         <%= f.radio_button :address_number, 2 %>
         <%= f.label :addrsess_number_2, "新しいお届け先" %></br>
         <%= f.label :delivery_postal_code, "郵便番号（ハイフンなし）" %>
