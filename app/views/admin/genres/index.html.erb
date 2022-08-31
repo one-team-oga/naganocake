@@ -2,6 +2,14 @@
     <div class="font_title pr-3 pl-3">
         ジャンル一覧・追加
     </div>
+    <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のエラーメッセージが発生しました
+        <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
 </div>
 
 <div class="form-group　d-flex ml-5">

@@ -19,11 +19,11 @@ class Public::OrdersController < ApplicationController
   
   def create
     @order = current_customer.orders.new(order_params)
-    cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items.all
     
     @order.save
     
-    cart_items.each do |cart|
+    @cart_items.each do |cart|
 # 取り出したカートアイテムの数繰り返します
 # order_item にも一緒にデータを保存する必要があるのでここで保存します
       ordering_detail = OrderingDetail.new
@@ -36,11 +36,13 @@ class Public::OrdersController < ApplicationController
       ordering_detail.save
     end
     redirect_to orders_complete_path
-    cart_items.destroy_all
+    @cart_items.destroy_all
   end
   
   def confirm
     @order = Order.new(order_params)
+    @customer = current_customer
+     
     if params[:order][:address_number] == "0"
       @order.delivery_postal_code = current_customer.postal_code
       @order.delivery_address = current_customer.address
@@ -50,6 +52,8 @@ class Public::OrdersController < ApplicationController
       @order.delivery_postal_code = @address.postal_code
       @order.delivery_address = @address.address
       @order.delivery_name = @address.name
+    else
+      render :new
     end
   
     @cart_items = current_customer.cart_items.all

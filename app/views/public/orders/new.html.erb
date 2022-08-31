@@ -2,6 +2,14 @@
     <div class="font_title mb-4 pr-3 pl-3">
         注文情報入力
     </div>
+    <% if @order.errors.any? %>
+        <%= @order.errors.count %>件のエラーメッセージが発生しました
+          <ul>
+            <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+            <% end %>
+          </ul>
+    <% end %>
 </div>
 
 <div class="container m-3">

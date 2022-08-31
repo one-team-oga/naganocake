@@ -1,4 +1,14 @@
-<div class="m-5"><h4>配送先登録/一覧</h4></div>
+<div class="m-5">
+    <h4>配送先登録/一覧</h4>
+    <% if @address.errors.any? %>
+        <%= @address.errors.count %>件のエラーメッセージが発生しました
+          <ul>
+            <% @address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+            <% end %>
+          </ul>
+    <% end %>
+</div>
 
 <div class="container m-5">
     <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>

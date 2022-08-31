@@ -7,9 +7,14 @@ class Public::AddressesController < ApplicationController
   end
   
   def create
-    address = Address.new(address_params)
-    address.save
-    redirect_to addresses_path
+    @address = Address.new(address_params)
+    @addresses = Address.all
+    @customer = current_customer
+    if @address.save
+      redirect_to addresses_path
+    else
+      render :index
+    end
   end
   
   def edit
@@ -18,16 +23,20 @@ class Public::AddressesController < ApplicationController
   end
   
   def update
-    address = Address.find(params[:id])
-    address.update(address_params)
-    redirect_to addresses_path
+    @address = Address.find(params[:id])
+    @customer = current_customer
+    if @address.update(address_params)
+      redirect_to addresses_path
+    else
+      render :edit
+    end
   end
   
   def destroy
-   address = Address.find(params[:id])  
-   address.destroy
-   redirect_to addresses_path
- end
+    @address = Address.find(params[:id])  
+    @address.destroy
+    redirect_to addresses_path
+  end
  
  private
   def address_params

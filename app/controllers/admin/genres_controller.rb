@@ -2,9 +2,13 @@ class Admin::GenresController < ApplicationController
   layout 'admin/layouts/application'  #layoutを宣言
   
   def create
-    genre = Genre.new(genre_params)
-    genre.save
-    redirect_to admin_genres_path
+    @genre = Genre.new(genre_params)
+    @genres = Genre.all
+    if @genre.save
+      redirect_to admin_genres_path
+    else
+      render :index
+    end
   end
   
   def index
@@ -17,9 +21,12 @@ class Admin::GenresController < ApplicationController
   end
   
   def update
-    genre = Genre.find(params[:id])
-    genre.update(genre_params)
-    redirect_to admin_genres_path
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
+    else
+      render :edit
+    end
   end
   
  private
