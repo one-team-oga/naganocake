@@ -42,13 +42,13 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index,:update,:destroy,:create]
   end
-
+  
     get 'customers/my_page' => 'public/customers#show', as: 'my_page'
     get 'customers/information/edit' => 'public/customers#edit', as: 'information_edit'
-    patch  'customers/infomation' => 'public/customers#update', as: 'information_update'
+    patch  'customers/information' => 'public/customers#update', as: 'information_update'
     get 'customers/unsubcribe' => 'public/customers#unsubcribe'
     get 'customers/withdraw' => 'public/customers#withdrow'
-   
+    
    scope module: :public do
    resources :items, only: [:index,:show]
    end
