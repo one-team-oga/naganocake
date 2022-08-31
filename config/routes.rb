@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => 'public/customers#edit', as: 'information_edit'
     patch  'customers/information' => 'public/customers#update', as: 'information_update'
     get 'customers/unsubcribe' => 'public/customers#unsubcribe'
-    get 'customers/withdraw' => 'public/customers#withdrow'
+    patch 'customers/withdraw' => 'public/customers#withdraw'
     
    scope module: :public do
    resources :items, only: [:index,:show]
