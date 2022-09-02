@@ -7,13 +7,13 @@
 <div class="container m-3">
     <div class="row m-3">
         <div class="font-weight-bold">　　購入者　　　　　　</div>
-        <%= link_to orders_path do %>
+        <%= link_to admin_orders_path do %>
         <%= @order.customer.first_name + @order.customer.last_name %>
         <% end %>
     </div>
     <div class="row m-3">
         <div class="font-weight-bold">　　注文日　　　　　　</div>
-        <%= @order.created_at %>
+        <%= l @order.created_at %>
     </div>
     <div class="row m-3">
        <div class="font-weight-bold">　　配送先　　　　　　</div>
@@ -25,7 +25,56 @@
     </div>
      <div class="row m-3">
         <div class="font-weight-bold">　　注文ステータス　　</div>
-        <%= @order.order_status_i18n %>
+        <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+        <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+        <%= f.submit '更新', class:"btn btn-success" %>
+        <% end %>
     </div>
     
+   <table class="table total-table ml-5" border="2" rules="rows" frame="hsides" bordercolor="silver">
+    <thead bgcolor="#DDDDDD">
+        <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+        </tr>
+    </thead>
+            <% @ordering_details.each do |ordering_detail| %>
+    <tbody>
+
+        <tr>
+            <td><%= ordering_detail.item.name %></td>
+            <td><%= ordering_detail.price %></td>
+            <td><%= ordering_detail.amount %></td>
+            <td><%= ordering_detail.price * ordering_detail.amount %></td>
+            <td>
+                <%= form_with model: @ordering_detail, url: admin_ordering_detail_path, method: :patch, local: true do |f| %>
+                    <%= f.select :production_status, OrderingDetail.production_statuses_i18n.invert %>
+                    <%= f.submit '更新', class:"btn btn-success" %>
+                <% end %>
+            </td>
+        </tr>
+        
+    </tbody>
+    <% end %>
+    </table>
+    <div class="absolute_parent">
+    <div class="absolute">
+        <table>
+            <tr>
+                <th>商品合計</th>
+                <td>0000円</td>
+            </tr>
+            <tr>
+                <th>送料</th>
+                <td>800円</td>
+            </tr>
+            <tr>
+                <th>請求金額合計</th>
+                <td>0000円</td>
+            </tr>
+        </table>
+    </div>
 </div>

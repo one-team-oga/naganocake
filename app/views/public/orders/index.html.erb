@@ -1,6 +1,6 @@
 <div class="page_title mb-3">
     <div class="font_title mb-4">
-        <%= %>さんの注文履歴
+        <%= @customer.first_name + @customer.last_name %>さんの注文履歴
     </div>
 </div>
 
@@ -19,7 +19,7 @@
             <tr>
                 <td>
                     <%= link_to order_path(order.id) do %>
-                        <%= order.created_at %>
+                        <%= l order.created_at %>
                     <% end %>
                 </td>
                 <td></td>

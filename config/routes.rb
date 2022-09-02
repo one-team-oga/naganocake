@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   
   namespace :admin do
-    resources :orders, only: [:show,:update]
+    resources :orders, only: [:show,:update,:index]
   end
   
   namespace :admin do

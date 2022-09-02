@@ -51,5 +51,5 @@
 <div style="text-align: left"  class="customer_show_btn">
                 <%= link_to '編集する', edit_admin_customer_path(@customer.id),  class: "btn btn-success mr-5" %>
             
-                <%= link_to '注文履歴一覧を見る', orders_path(@customer.id),  class: "btn btn-primary ml-3" %>
+                <%= link_to '注文履歴一覧を見る', admin_orders_path(@customer.id),  class: "btn btn-primary ml-3" %>
 </div>
