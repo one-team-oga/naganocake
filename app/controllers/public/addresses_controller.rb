@@ -1,5 +1,7 @@
 class Public::AddressesController < ApplicationController
+  before_action :authenticate_customer!
   layout 'public/layouts/application'  #layoutを宣言
+  
   def index
     @address = Address.new
     @customer = current_customer
