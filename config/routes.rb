@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   
   namespace :admin do
-    resources :orders, only: [:show,:update,:index]
+    get 'orders/index/:customer_id' => 'orders#index', as: 'order_index'
+    resources :orders, only: [:show,:update]
   end
   
   namespace :admin do

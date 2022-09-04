@@ -15,7 +15,7 @@
 <div style="text-align: center" class="w-50% mt-3">
     <div class="form-group d-inline-block" style="text-align: left">
 
-<%= form_with model:@item, url: admin_item_path, method: :patch, local: true do |f| %>
+<%= form_with model:@item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
         <div class="form-group" >
             <%= f.label :image, "商品画像　　　　" %>
             <%= f.file_field :image,  accept: "image/*" %> 

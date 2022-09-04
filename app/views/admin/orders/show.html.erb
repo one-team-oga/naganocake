@@ -7,7 +7,7 @@
 <div class="container m-3">
     <div class="row m-3">
         <div class="font-weight-bold">　　購入者　　　　　　</div>
-        <%= link_to admin_orders_path do %>
+        <%= link_to admin_order_index_path(@order.customer.id) do %>
         <%= @order.customer.first_name + @order.customer.last_name %>
         <% end %>
     </div>
@@ -25,9 +25,9 @@
     </div>
      <div class="row m-3">
         <div class="font-weight-bold">　　注文ステータス　　</div>
-        <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-        <%= f.select :order_status, Order.order_statuses_i18n.invert %>
-        <%= f.submit '更新', class:"btn btn-success" %>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+            <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+            <%= f.submit '更新', class: "btn btn-success" %>
         <% end %>
     </div>
     
@@ -50,7 +50,11 @@
             <td><%= ordering_detail.amount %></td>
             <td><%= ordering_detail.price * ordering_detail.amount %></td>
             <td>
-                <%= form_with model: @ordering_detail, url: admin_ordering_detail_path, method: :patch, local: true do |f| %>
+                <%= form_with model: ordering_detail, url: admin_ordering_detail_path(ordering_detail), method: :patch, local: true do |f| %>
+                    <%= f.hidden_field :order_id, value: @order.id %>
+                    <%= f.hidden_field :item_id, value: ordering_detail.item_id %>
+                    <%= f.hidden_field :price, value: ordering_detail.price %>
+                    <%= f.hidden_field :amount, value: ordering_detail.amount %>
                     <%= f.select :production_status, OrderingDetail.production_statuses_i18n.invert %>
                     <%= f.submit '更新', class:"btn btn-success" %>
                 <% end %>
@@ -65,7 +69,7 @@
         <table>
             <tr>
                 <th>商品合計</th>
-                <td>0000円</td>
+                <td><%= @total_price %></td>
             </tr>
             <tr>
                 <th>送料</th>

@@ -2,14 +2,16 @@ class Admin::OrderingDetailsController < ApplicationController
   before_action :authenticate_admin!
 
 def update
-    @order = Order.find(params[:id])
-    @ordering_details = OrderingDetail.all.where(id: params[:id])
     @ordering_detail = OrderingDetail.find(params[:id])
+    @order = @ordering_detail.order.id
+    
     if  @ordering_detail.update(ordering_detail_params)
-      redirect_to admin_orders_path
+      redirect_to admin_order_path(@order)
     else
       render :show
     end
+    
+    
 end
 
 private

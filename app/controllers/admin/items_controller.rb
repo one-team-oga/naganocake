@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @genres = Genre.all
     if @item.save
-      redirect_to admin_item_path(item.id)
+      redirect_to admin_item_path(@item)
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @genres = Genre.all
     if @item.update(item_params)
-     redirect_to admin_item_path(item.id)
+     redirect_to admin_item_path(@item)
     else
      render :edit
     end

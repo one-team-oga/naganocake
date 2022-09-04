@@ -1,6 +1,6 @@
 <div class="page_title mb-3">
     <div class="font_title mb-4">
-        <%= %>さんの注文履歴
+        <%= @customer.first_name + @customer.last_name %>さんの注文履歴
     </div>
 </div>
 
@@ -22,12 +22,12 @@
                         <%= l order.created_at %>
                     <% end %>
                 </td>
-                <td></td>
+                <td><%= order.ordering_details.sum(:amount) %></td>
                 <td><%= order.order_status_i18n %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-<%= paginate  @orders %>
+<%= paginate  @orders, theme: 'bootstrap-5' %>
 </div>

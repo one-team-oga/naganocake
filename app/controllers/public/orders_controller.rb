@@ -82,10 +82,4 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:name, :address, :postal_code)
   end
   
-  def ensure_correct_customer
-    @cart_item = Book.find(params[:id])
-    unless @book.user == current_user
-     redirect_to books_path
-    end
-  end
 end

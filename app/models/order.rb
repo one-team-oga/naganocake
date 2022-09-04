@@ -9,4 +9,5 @@ class Order < ApplicationRecord
     
     enum payment: { credit: 0, bank: 1 }
     enum order_status: { payment_waiting: 0, payment_confirmation: 1, in_production: 2, preparing_delivery: 3, delivered: 4 }
+    
 end
