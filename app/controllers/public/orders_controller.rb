@@ -47,7 +47,12 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @customer = current_customer
-     
+    @cart_items = current_customer.cart_items.all
+    
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    
+    @customer_id = current_customer.id
+
     if params[:order][:address_number] == "0"
       @order.delivery_postal_code = current_customer.postal_code
       @order.delivery_address = current_customer.address
@@ -57,16 +62,13 @@ class Public::OrdersController < ApplicationController
       @order.delivery_postal_code = @address.postal_code
       @order.delivery_address = @address.address
       @order.delivery_name = @address.name
-    else
+    elsif  params[:order][:address_number] == "2"
+      render :confirm
+    else 
       render :new
     end
   
-    @cart_items = current_customer.cart_items.all
-    
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    
-    @customer_id = current_customer.id
-
+   
   end
   
   private

@@ -52,7 +52,7 @@
 <table border="1" width="200" class="">
     <tr>
         <th bgcolor="silver">合計金額</th>
-        <td><%= @total_price %></td>
+        <td><%= @total_price.to_s(:delimited) %></td>
     </tr>
 </table>
 </div>

@@ -1,7 +1,6 @@
 class Public::CartItemsController < ApplicationController
   layout 'public/layouts/application'  #layoutを宣言
   before_action :authenticate_customer!
-  
   def index
     @cart_items = current_customer.cart_items
     @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
@@ -21,7 +20,7 @@ class Public::CartItemsController < ApplicationController
     # もしカート内に「同じ」商品がない場合は通常の保存処理 
     elsif @cart_item.save
           @cart_items = current_customer.cart_items.all
-          render :index
+          redirect_to cart_items_path
     end
   end
   

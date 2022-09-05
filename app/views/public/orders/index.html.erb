@@ -22,7 +22,7 @@
                         <%= l order.created_at %>
                     <% end %>
                 </td>
-                <td></td>
+                <td><%= order.ordering_details.sum(:amount) %></td>
                 <td><%= order.order_status_i18n %></td>
             </tr>
         <% end %>

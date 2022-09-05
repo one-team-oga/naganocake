@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
   layout 'public/layouts/application'  #layoutを宣言
+   before_action :redirect_root, except: [ :index, :show]
   def index
     @items = Item.page(params[:page]).per(8)
   end
