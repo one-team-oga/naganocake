@@ -112,6 +112,18 @@
     margin-left: 200px;
 }
 
-caption {
-    text-align: left;
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flex-items {
+   width: 25%;
+   word-wrap: break-word;
+}
+
+.search_form {
+    margin-right: 100px;
 }

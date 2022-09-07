@@ -1,37 +1,31 @@
-<div class="container">
-        <div class="col-sm-2">
-            ジャンル検索</br>
-            ケーキ</br>
-            焼き菓子</br>
-            プリン</br>
-            キャンディ</br>
-        </div>
-</div>
-
-<div class="card-list-container py-5 d-flex flex-wrap mb-2 m-5">
-  <% @items.each do |item| %>
-  <div class="card mx-auto mt-4 shadow-lg w-25 h-25">
-    <%= link_to item_path(item.id) do %>
-        <% if item.image.attached? %>
-                <%= image_tag item.image, size: "200x200", class:"card-img-top"; %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-3">
+       <%= render 'public/layouts/genre-sarch', genres: @genres %>
+    </div>
+    <div class="col-sm-9">
+      <div>
+        <p>商品一覧<span>(全<%= @items.count %>件)</span></p>
+      </div>
+      <div class="flex-box">
+        <% @items.each do |item| %>
+        <div class="flex-items">
+          <%= link_to item_path(item.id) do %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "150x100" %>
             <% else %>
-                <%= image_tag 'no_image', size: "200x200", class:"card-img-top"; %>
-        <% end %>
-    <% end %>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12">
-          <p class="card-name">
-              <%= item.name %>
-          </p>
-          <p class="card-price">
-              ¥<%= item.price %>
-          </p>
+              <%= image_tag 'no_image', size: "150x100" %>
+            <% end %>
+          <% end %></br>
+              <b><%= item.name %></b></br>
+              ¥<%= item.price.to_s(:delimited) %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
-  <% end %>
-  
 </div>
-<%= paginate @items %>
+
+
+
+<%= paginate @items, theme: 'bootstrap-5' %>

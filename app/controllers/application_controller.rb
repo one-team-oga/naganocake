@@ -3,9 +3,8 @@ class ApplicationController < ActionController::Base
      my_page_path(resource)
   end
 
-
   def after_sign_out_path_for(resource)
     '/'
   end
-  
+
 end
