@@ -10,12 +10,20 @@ class Public::ItemsController < ApplicationController
   end
   
   def index
-    if params[:name].present?
+    @genres = Genre.all
+    if params[:genre_id]
+		  @genre = Genre.find(params[:genre_id])
+		  @items = @genre.items.where(is_active: true).page(params[:page]).per(8)
+		  @items_count = @items.count
+    elsif params[:name].present?
       @items = Item.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      @items_count = @items.count
     elsif params[:name].present?
       @items = Item.none.page(params[:page]).per(8)
+      @items_count = @items.count
     else
       @items = Item.page(params[:page]).per(8)
+      @items_count = Item.all.count
     end
   end
   

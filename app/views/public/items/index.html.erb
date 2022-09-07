@@ -1,11 +1,11 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
        <%= render 'public/layouts/genre-sarch', genres: @genres %>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-10">
       <div>
-        <p>商品一覧<span>(全<%= @items.count %>件)</span></p>
+        <p class="fw-bolder">商品一覧(全<%= @items_count %>件)</p>
       </div>
       <div class="flex-box">
         <% @items.each do |item| %>
