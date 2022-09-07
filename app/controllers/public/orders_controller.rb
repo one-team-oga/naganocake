@@ -15,11 +15,13 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders.page(params[:page])
     @customer = current_customer
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def show
     @order = Order.find(params[:id])
-    
+    @ordering_details = @order.ordering_details
   end
   
   def create
