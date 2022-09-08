@@ -12,13 +12,15 @@
         <div class="flex-items">
           <%= link_to item_path(item.id) do %>
             <% if item.image.attached? %>
-              <%= image_tag item.image, size: "150x100" %>
+              <%= image_tag item.image, size: "200x100" %>
             <% else %>
-              <%= image_tag 'no_image', size: "150x100" %>
+              <%= image_tag 'sample_image', size: "200x100" %>
             <% end %>
           <% end %></br>
-              <b><%= item.name %></b></br>
-              ¥<%= item.price.to_s(:delimited) %>
+              <div class="mt-2 mr-2 mb-2">
+                <b><%= item.name %></b></br>
+                <b>¥<%= item.price.to_s(:delimited) %></b>
+              </div>
         </div>
         <% end %>
       </div>
@@ -27,5 +29,4 @@
 </div>
 
 
-
-<%= paginate @items, theme: 'bootstrap-5' %>
+<div class="mt-5"><%= paginate @items, theme: 'bootstrap-5'%></div>

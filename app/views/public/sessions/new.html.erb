@@ -1,15 +1,16 @@
 <%= render "public/shared/links" %>
-<div class="page_title mb-3">
-    <div class="font_title mb-4 pr-3 pl-3">
+<div class="container">
+  <div class="login mb-3">
+    <div class="font_title pr-3 pl-3">
         ログイン
     </div>
-</div>
+  </div>
 
-<div class="container">
-<div class="login_message">
-    <div class="pb-0 pr-2 pl-2 ">会員の方はこちらからログイン</div>
+  <div class="login_message">
+    <div class="pb-0 pr-2 pl-2">会員の方はこちらからログイン</div>
   </div>
 </div>
+
 　<div style="text-align: center" style="width:600px;">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group mt-3">
@@ -26,6 +27,7 @@
         <%= f.submit "　　ログイン　　", class: "btn btn-sm btn-primary mr-5" %>
       </div>
     <% end %>
+    
     
   <div class="container">
     <div class="login_message">

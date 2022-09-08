@@ -1,10 +1,11 @@
 <%= render "admin/shared/links" %>
 
-<div class="page_title mb-3">
-    <div class="font_title mb-4 pr-3 pl-3">
+<div class="container mt-5">
+  <div class="login mb-3">
+    <div class="font_title pr-3 pl-3">
         管理者ログイン
     </div>
-</div>
+  </div>
 
 　<div style="text-align: center" style="width:600px;">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
