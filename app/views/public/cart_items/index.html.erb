@@ -1,6 +1,10 @@
-<div class="container">
-    <div class="row m-3">
-        ショッピングカート
+<div class="conatiner">
+    <div class="page_title d-inline-block">
+        <div class="font_title pr-3 pl-3">
+           <p>ショッピングカート</p>
+        </div>
+    </div>
+    <div style="text-align: right">
         <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger mr-3" %>
     </div>
 </div>

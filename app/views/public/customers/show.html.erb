@@ -5,32 +5,32 @@
     </div>
 </div>
 
-<div class="ml-5 mt-3">
+<div class="ml-5 mt-4">
     <h5 class="font-weight-bold mb-3">登録情報　<%= link_to "　編集する　", information_edit_path, class: "btn btn-success" %></h5>
     
     <table border="1" width="500">
         <tr>
-            <td bgcolor="silver" class="pt-1 pb-1">氏名</td>
+            <td bgcolor="silver" class="pt-2 pb-2">氏名</td>
             <td><%= @customer.first_name + "　" + @customer.last_name %></td>
         </tr>
         <tr>
-            <td bgcolor="silver" class="pt-1 pb-1">カナ</td>
+            <td bgcolor="silver" class="pt-2 pb-2">カナ</td>
             <td><%= @customer.first_name_kana + "　" + @customer.last_name_kana %></td>
         </tr>
         <tr>
-            <td bgcolor="silver" class="pt-1 pb-1">郵便番号</td>
+            <td bgcolor="silver" class="pt-2 pb-2">郵便番号</td>
             <td><%= @customer.postal_code %></td>
         </tr>
         <tr>
-            <td bgcolor="silver" class="pt-1 pb-1">住所</td>
+            <td bgcolor="silver" class="pt-2 pb-2">住所</td>
             <td><%= @customer.address %></td>
         </tr>
         <tr>
-            <td bgcolor="silver" class="pt-1 pb-1">電話番号</td>
+            <td bgcolor="silver" class="pt-2 pb-2">電話番号</td>
             <td><%= @customer.telephone_number %></td>
         </tr>
         <tr>
-            <td bgcolor="silver" class="pt-1 pb-1">メールアドレス</td>
+            <td bgcolor="silver" class="pt-2 pb-2">メールアドレス</td>
             <td><%= @customer.email %></td>
         </tr>
     </table>

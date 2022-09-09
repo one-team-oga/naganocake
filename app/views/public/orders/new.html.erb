@@ -14,7 +14,7 @@
 
 <div class="container m-3">
     <div class="row m-3">
-    <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
+    <%= form_with model: @order, url: confirm_path, local: true do |f| %>
 
         <div class="font-weight-bold">　　支払い方法　　　　　　</div>
         <%= f.radio_button :payment, Order.payments.key(0) %>

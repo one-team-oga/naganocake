@@ -20,7 +20,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    if id ==! confirm
     @order = Order.find(params[:id])
+    end
     @ordering_details = @order.ordering_details
   end
   
@@ -69,8 +71,7 @@ class Public::OrdersController < ApplicationController
     else 
       render :new
     end
-  
-   
+
   end
   
   private
