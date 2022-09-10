@@ -1,14 +1,12 @@
-<div class="page_title">
-    <div class="font_title mb-4 pl-4 pr-4">
-        注文履歴詳細
-    </div>
+<div class="page_title mb-3 pl-3 pr-3">
+    注文履歴詳細
 </div>
 
-<div class="container m-3">
+<div class="ml-5">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col">
             <b>注文情報</b>
-            <table border="1" width="100%">
+            <table class="mt-2" border="1" width="700px">
                 <tr>
                     <th width="20%" class="pl-1 pt-2 pb-2" bgcolor="#DDDDDD">注文日</th>
                     <td class="pl-1 pt-2 pb-2"><%=  @order.created_at.strftime('%Y/%m/%d') %></td>
@@ -31,9 +29,9 @@
                 </tr>
             </table>
         </div>
-        <div class="col-sm-4">
+        <div class="col">
             <b>請求情報</b>
-            <table border="1" width="100%">
+            <table class="mt-2" border="1" width="300px">
                 <tr>
                     <th class="pl-1 pt-2 pb-2" bgcolor="#DDDDDD">商品合計</th>
                     <td class="pl-1 pt-2 pb-2"><%= @order.total_payment.to_s(:delimited) %></td>
@@ -50,9 +48,9 @@
         </div>
     </div>
 </div>
-    <div class="col-sm-9 ml-3">
+<div class="ml-5 mt-3">
         <b>注文内容</b>
-        <table border="1" width="100%">
+        <table class="mt-2" border="1" width="1000px">
             <thead bgcolor="#DDDDDD">
                 <th class="pl-1 pt-2 pb-2">商品</th>
                 <th class="pl-1 pt-2 pb-2">単価（税込）</th>
@@ -68,4 +66,4 @@
             </tbody>
             <% end %>
         </table>
-    </div>
+</div>

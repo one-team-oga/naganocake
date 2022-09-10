@@ -1,12 +1,10 @@
-<div class="page_title mb-3">
-    <div class="font_title mb-4 pr-3 pl-3">
+<div class="page_title mb-4 pl-3 pr-3">
         新規会員登録
-    </div>
 </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: registration_path(resource_name) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-    <div class="container m-5">
+    <div class="container ml-5">
       <div class="form-group">
         <%= f.label :first_name, "名前　　　　　　　　　　　" %>
         <%= f.label :first_name, "(姓)" %>
@@ -61,12 +59,10 @@
     </div>
 <% end %>
 
-<div class="container">
-    <div class="login_message">
-      <div class="pb-0 pr-2 pl-2 ">既に登録済みの方</div>
+    <div class="login_message mt-3">
+      <div class="pb-0 pr-2 pl-2">既に登録済みの方</div>
     </div>
-  </div>
-  
+
 <div class="sign_up_message">
   <p><%= link_to "こちら",  customer_session_path %>からログインをしてください</p>
 </div>

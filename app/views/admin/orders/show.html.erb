@@ -1,7 +1,5 @@
-<div class="page_title">
-    <div class="font_title mb-4">
+<div class="page_title pl-3 pr-3">
         注文履歴詳細
-    </div>
 </div>
 
 <div class="container m-3">
@@ -27,7 +25,7 @@
         <div class="font-weight-bold">　　注文ステータス　　</div>
         <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
             <%= f.select :order_status, Order.order_statuses_i18n.invert %>
-            <%= f.submit '更新', class: "btn btn-success" %>
+            <%= f.submit '更新', class: "btn btn-success ml-3" %>
         <% end %>
     </div>
     
@@ -46,9 +44,9 @@
 
         <tr>
             <td><%= ordering_detail.item.name %></td>
-            <td><%= ordering_detail.price %></td>
+            <td><%= (ordering_detail.price * 1.1).floor.to_s(:delimited) %></td>
             <td><%= ordering_detail.amount %></td>
-            <td><%= ordering_detail.price * ordering_detail.amount %></td>
+            <td><%= (ordering_detail.price * 1.1 * ordering_detail.amount).floor.to_s(:delimited) %></td>
             <td>
                 <%= form_with model: ordering_detail, url: admin_ordering_detail_path(ordering_detail), method: :patch, local: true do |f| %>
                     <%= f.hidden_field :order_id, value: @order.id %>
@@ -56,7 +54,7 @@
                     <%= f.hidden_field :price, value: ordering_detail.price %>
                     <%= f.hidden_field :amount, value: ordering_detail.amount %>
                     <%= f.select :production_status, OrderingDetail.production_statuses_i18n.invert %>
-                    <%= f.submit '更新', class:"btn btn-success" %>
+                    <%= f.submit '更新', class:"btn btn-success ml-3" %>
                 <% end %>
             </td>
         </tr>
@@ -68,16 +66,16 @@
     <div class="absolute">
         <table>
             <tr>
-                <th>商品合計</th>
-                <td><%= @total_price %></td>
+                <th class="font-big">商品合計</th>
+                <td class="font-big"><%= @order.total_payment.to_s(:delimited) %>円</td>
             </tr>
             <tr>
-                <th>送料</th>
-                <td>800円</td>
+                <th class="font-big">送料</th>
+                <td class="font-big"><%= @order.postage.to_s(:delimited) %>円</td>
             </tr>
             <tr>
-                <th>請求金額合計</th>
-                <td>0000円</td>
+                <th class="font-big" width="140px">請求金額合計</th>
+                <td class="font-big"><b><%= (@order.total_payment + @order.postage).to_s(:delimited) %>円</b></td>
             </tr>
         </table>
     </div>

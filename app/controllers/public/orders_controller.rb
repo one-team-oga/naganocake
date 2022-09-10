@@ -6,6 +6,9 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @order = Order.new
     @addresses = @customer.addresses
+    if @order == nil
+      render :index
+    end
   end
 
   def complete
@@ -20,9 +23,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    if id ==! confirm
     @order = Order.find(params[:id])
-    end
     @ordering_details = @order.ordering_details
   end
   

@@ -1,8 +1,7 @@
-<div class="conatiner">
-    <div class="page_title mb-3 d-inline-block">
-        <div class="font_title pr-3 pl-3">
-           <p>会員情報編集</p>
-    </div>
+<div class="page_title mb-4 pl-3 pr-3">
+    会員情報編集
+</div>
+<div class="error-message">
     <% if @customer.errors.any? %>
         <%= @customer.errors.count %>件のエラーメッセージが発生しました
           <ul>
@@ -13,10 +12,8 @@
     <% end %>
 </div>
 
-<div class="container">
-<div class="form-group">
+<div class="form-group ml-5">
 <%= form_with model: @customer, url: information_update_path, method: :patch, local: true do |f| %>
-    <div class="container m-5">
       <div class="form-group">
         <%= f.label :first_name, "氏名　　　　　　　" %>
         <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
@@ -53,9 +50,7 @@
         <%= f.submit "　　編集内容を保存　　", class: "btn btn-success mr-5 ml-5" %>
         <%= link_to "　退会する　", customers_unsubcribe_path, class: "btn btn-danger ml-5" %>
       </div>
-  　</div>
 
     
     <% end %>
-</div>
 </div>
