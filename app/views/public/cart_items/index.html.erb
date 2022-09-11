@@ -1,0 +1,67 @@
+<div class="d-flex ml-3">
+    <div class="page_title mb-3 pl-3 pr-3">
+        ショッピングカート
+    </div>
+    <div>
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger cart_item-destroy_all mt-4" %>
+    </div>
+</div>
+
+<div align="center" class="container">
+<table border="1" width="100%">
+    <thead  bgcolor="silver">
+        <tr>
+            <th class="pl-2 pt-2 pb-2">商品名</th>
+            <th class="pl-2 pt-2 pb-2">単価(税込）</th>
+            <th class="pl-2 pt-2 pb-2">数量</th>
+            <th class="pl-2 pt-2 pb-2">小計</th>
+            <th class="pl-2 pt-2 pb-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+            <td class="p-2">
+                <% if cart_item.item.image.attached? %>
+                    <%= image_tag cart_item.item.image, size: "75x50" %>
+                <% else %>
+                    <%= image_tag 'sample_image', size: "75x50" %>
+                <% end %>
+                
+                <b class="pl-3"><%= cart_item.item.name %></b>
+            </td>
+            <td class="pl-2"><b><%= (cart_item.item.add_tax_price).floor.to_s(:delimited) %></b></td>
+            <td class="pl-2">
+                <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch, local: true do |f| %>
+                    <%= f.hidden_field :item_id, value: cart_item.item.id %>
+                    <%= f.hidden_field :customer_id, value: cart_item.customer.id %>
+                    <%= f.select :amount, *[1..10]  %>
+                    <%= f.submit '変更', class:"btn btn-success ml-2" %>
+                <% end %>
+            </td>
+            <td class="pl-2"><b><%= (cart_item.subtotal).to_s(:delimited) %></b></td>
+            <td align="center"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        
+        <% end %>
+    </tbody>
+</table>
+
+<div class="row mt-4">
+        <div class="buy-continue-btn"><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></div>
+    <table class="total_price-table" border="1" width="200">
+        <tr>
+            <th class="pl-2 pt-2 pb-2" bgcolor="silver">合計金額</th>
+            <td class="pl-2"><b><%= @total_price.to_s(:delimited) %></b></td>
+        </tr>
+    </table>
+</div>
+</div>
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="row">
+        <% if current_customer.cart_items.any? %>
+            <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success pl-5 pr-5" %>
+        <% end %>
+    </div>
+</div>

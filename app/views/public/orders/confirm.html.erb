@@ -1,0 +1,83 @@
+<div class="page_title mb-3 pl-3 pr-3">
+    注文情報確認
+</div>
+
+<div class="ml-5 d-flex">
+<table border="1" width="1000">
+    <thead  bgcolor="silver">
+        <tr>
+            <th class="pt-2 pb-2 pl-2">商品名</th>
+            <th class="pt-2 pb-2 pl-2">単価(税込）</th>
+            <th class="pt-2 pb-2 pl-2">数量</th>
+            <th class="pt-2 pb-2 pl-2">小計</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+            <td class="p-2">
+                <% if cart_item.item.image.attached? %>
+                    <%= image_tag cart_item.item.image, size: "75x50" %>
+                <% else %>
+                    <%= image_tag 'sample_image', size: "75x50" %>
+                <% end %>
+                
+                <b class="pl-3"><%= cart_item.item.name %></b>
+            </td>
+            <td class="pt-2 pb-2 pl-2">
+                <%= cart_item.item.name %>
+            </td>
+            <td class="pt-2 pb-2 pl-2"><%= (cart_item.item.add_tax_price).floor.to_s(:delimited) %></td>
+            <td class="pt-2 pb-2 pl-2"><%= cart_item.amount %></td>
+        </tr>
+        <% end %>
+        
+    </tbody>
+</table>
+
+<div class="ml-3">
+<table border="1" width="200" class="">
+    <tr>
+        <th class="pt-2 pb-2 pl-2" bgcolor="silver">送料</th>
+        <td class="pt-2 pb-2 pl-2"><%= 800 %></td>
+    </tr>
+    <tr>
+        <th class="pt-2 pb-2 pl-2" bgcolor="silver">合計金額</th>
+        <td class="pt-2 pb-2 pl-2"><%= @total.to_s(:delimited) %></td>
+    </tr>
+    <tr>
+      <th class="pt-2 pb-2 pl-2" bgcolor="silver">請求金額</th>
+      <td class="pt-2 pb-2 pl-2"><%= (@total + 800).to_s(:delimited) %></td>
+    </tr>
+</table>
+</div>
+</div>
+
+    <div class="row mt-3 ml-4">
+      <div class="font-weight-bold">　　支払い方法　　　</div>
+      <%= @order.payment_i18n %>
+    </div>
+    <div class="row mt-3 ml-4">
+      <div class="font-weight-bold">　　お届け先　　　　</div>
+      <%= "〒" + @order.delivery_postal_code + " " + @order.delivery_address %></br>
+      <%= @order.delivery_name %>
+    </div>
+</div>
+
+<div class="container mt-3 d-flex align-items-center">
+    <%= form_with model: @order, url: orders_path, local: :true do |f| %>
+        <%= f.hidden_field :customer_id, value: @customer_id %>
+        <%= f.hidden_field :payment, value: @order.payment %>
+        <%= f.hidden_field :delivery_postal_code, value:  @order.delivery_postal_code%>
+        <%= f.hidden_field :delivery_address, value: @order.delivery_address %>
+        <%= f.hidden_field :delivery_name, value: @order.delivery_name %>
+        <%= f.hidden_field :postage, value: 800 %>
+        <%= f.hidden_field :total_payment, value:@total  %>
+        <%= f.hidden_field :order_status %>
+</div>
+<div class="d-flex justify-content-center">
+        <%= f.submit "　注文を確定する　", class: "btn btn-success" %>
+</div>
+
+
+ <% end %>

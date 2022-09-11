@@ -7,18 +7,228 @@
     box-sizing: border-box;
 }
 
+/* 共通 */
+.page_title {
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 150px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #DDDDDD;
+}
+
+.error-message {
+    margin-left: 100px;
+}
+
+.customer_name {
+    margin-left: 200px;
+}
+
+.font_title {
+    font-size: 18px;
+    background-color: #DDDDDD;
+}
+
+.fw-bolder {
+    font-weight: bolder;
+}
+
+.now_on_sale, .validity{
+     color: #32CD32;
+     font-weight: bolder;
+}
+
+.sold_out, .withdraw {
+    color: #D3D3D3;
+    font-weight: bolder;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.search_form {
+    margin-right: 100px;
+}
+
+.font-big {
+    font-size: 20px;
+}
+
+.order_status {
+    color: #32CD32;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+/* トップページ */
+.top-image {
+    position: relative;
+}
+
+.top-text {
+    position: absolute; top: 80px; left: 150px;
+    background-color: #fff;
+}
+
+/* アバウトページ */
+.about {
+    font-size: 50px;
+}
+
+/* 商品新規登録画面 */
+.new-item-title {
+    font-size: 24px;
+}
+
+.new_item_icon {
+    display: inline-block;
+    position: absolute; top:140px; right:160px 
+}
+
 .genres-index-title, .genres-edit-title, .item-new-title, .item-index-title {
     padding: 5px;
     margin: 30px 0 30px 120px;
     background-color: #CCCCCC;
 }
 
-.title {
-    display: inline-block;
-    
+/* ログイン画面 */
+.login {
+    display: flex;
+    align-items: flex-end;
 }
 
-.genre-form {
-    margin-left: 30px;
-    margin-bottom: 30px;
+.login_message {
+    display: inline-block;
+    margin: 5px 0 5px 50px;
+    background-color: #DDDDDD;
+}
+
+.sign_in_message {
+    margin: 5px 0 0 250px;
+}
+
+/* 新規登録画面 */
+.sign_up_message {
+    margin: 5px 0 0 150px;
+}
+
+
+/* ジャンル画面 */
+.table-genres {
+    width: 40%;
+}
+
+.genre-table-cell {
+    vertical-align: middle;
+}
+
+/* ジャンル検索画面 */
+.genre-search-table {
+    width: 95%;
+    border: solid 1px;  
+    padding: 10px;
+}
+
+.genre-search-table th {
+    text-align: center;
+    border: solid 1px;
+}
+
+/* 配送先画面*/
+.address-form{
+    width: 100%;
+}
+.address-success-btn{
+    margin-left: 250px;
+}
+
+/* カート画面*/
+.cart_item-destroy_all {
+    margin-left: 750px;
+}
+
+.total_price-table {
+    margin-left: 690px;
+}
+
+.buy-continue-btn {
+    margin-left: 100px;
+}
+
+
+
+
+
+
+.item-introduction-label {
+    vertical-align: top;
+}
+
+
+
+.customer_show_btn {
+    margin-left: 180px;
+}
+
+
+.table-customers {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* 退会画面*/
+
+.unsubcribe-container{
+    margin: 150px;
+}
+.unsubcribe-message {
+    font-size: 18px;
+}
+
+
+/* 管理者注文履歴詳細画面*/
+
+.absolute_parent {
+    position:  relative;
+}
+
+.absolute {
+    position:  absolute;
+    right:  0px;
+    bottom: 0px;       
+}
+
+.total-table {
+    width: 70%;
+}
+
+
+
+
+
+
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flex-items {
+   width: 25%;
+   word-wrap: break-word;
+}
+
+
+
+
+
+.item-introduction {
+    font-size: 20px;
+}
+
+.item-price{
+    font-size: 12px;
 }

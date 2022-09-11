@@ -1,0 +1,33 @@
+<div class="ml-3">
+    <div class="page_title mb-4 pl-3 pr-3">
+        <%= @customer.first_name + @customer.last_name %>さんの注文履歴
+    </div>
+</div>
+
+<div class="container ml-10">
+<table class="table" border="2" rules="rows" frame="hsides" bordercolor="silver">
+    <thead bgcolor="#DDDDDD">
+        <tr>
+            <th>購入日時</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @orders.each do |order| %>
+            <tr>
+                <td>
+                    <%= link_to admin_order_path(order.id) do %>
+                        <%= l order.created_at %>
+                    <% end %>
+                </td>
+                <td><%= order.ordering_details.sum(:amount) %></td>
+                <td><%= order.order_status_i18n %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= paginate  @orders, theme: 'bootstrap-5' %>
+</div>

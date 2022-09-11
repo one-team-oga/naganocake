@@ -1,0 +1,50 @@
+<div class="page_title mb-3 pl-3 pr-3">
+    配送先登録/一覧
+</div>
+<div class="error-message">
+    <% if @address.errors.any? %>
+        <%= @address.errors.count %>件のエラーメッセージが発生しました
+          <ul>
+            <% @address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+            <% end %>
+          </ul>
+    <% end %>
+</div>
+    
+<div class="container ml-5 mt-3 address-form">
+    <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+        <%= f.label :postal_code, "郵便番号（ハイフンなし）", style: "width: 250px" %>
+        <%= f.number_field :postal_code %></br>
+        <%= f.label :address, "住所", style: "width: 250px" %>
+        <%= f.text_field :address, :size=>"50" %></br>
+        <%= f.hidden_field :customer_id, value: @customer.id %>
+        <%= f.label :name, "宛名", style: "width: 250px" %>
+        <%= f.text_field :name %>
+        <%= f.submit '新規登録', class: "btn btn-success pl-3 pr-3 address-success-btn" %>
+    <% end %>
+</div>
+
+<table class="m-5" border="1" width="1000">
+    <thead bgcolor="silver">
+        <tr>
+            <th class="p-2">郵便番号</th>
+            <th class="p-2">住所</th>
+            <th class="p-2">宛名</th>
+            <th class="p-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @addresses.each do |address| %>
+        <tr>
+            <td class="p-2"><%= address.postal_code %></td>
+            <td class="p-2"><%= address.address %></td>
+            <td class="p-2"><%= address.name %></td>
+            <td class="p-2" align="center">
+                <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success mr-3" %>
+                <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger " %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-2">
+       <%= render 'public/layouts/genre-sarch', genres: @genres %>
+    </div>
+    <div class="col-sm-10">
+      <div>
+        <p class="fw-bolder">商品一覧(全<%= @items_count %>件)</p>
+      </div>
+      <div class="flex-box">
+        <% @items.each do |item| %>
+        <div class="flex-items">
+          <%= link_to item_path(item.id) do %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "200x100" %>
+            <% else %>
+              <%= image_tag 'sample_image', size: "200x100" %>
+            <% end %>
+          <% end %></br>
+              <div class="mt-2 mr-2 mb-2">
+                <b><%= item.name %></b></br>
+                <b>¥<%= item.price.to_s(:delimited) %></b>
+              </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="mt-5"><%= paginate @items, theme: 'bootstrap-5'%></div>

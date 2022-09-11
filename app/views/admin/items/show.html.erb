@@ -1,0 +1,43 @@
+<div class="page_title mb-5 pl-3 pr-3">
+        商品詳細
+</div>
+
+
+<div class="container d-flex">
+        <div class="col-4 mt-10">
+            <% if @item.image.attached? %>
+                <%= image_tag @item.image, size: "300x200" %>
+            <% else %>
+                <%= image_tag 'sample_image.jpeg', size: "300x200" %>
+            <% end %>
+        </div>
+        <div class="col-8">
+            <div>
+                <p class="fw-bolder">商品名　　　　　 　 <%= @item.name %></p>
+            </div>
+            <div class="">
+                <p class="fw-bolder">商品説明　　　　 　 <%= @item.introduction %></p>
+                
+            </div>
+            <div class="">
+                <p>ジャンル　　　　 　 <%= @item.genre.name %></p>
+            </div>
+            <div class="d-flex">
+                <p class="mr-5 fw-bolder">税込価格</br>（税抜価格）</p>
+                <p class="ml-2 fw-bolder"><%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</p>
+                
+            </div>
+            <div class="d-flex">
+                <p class="mr-5 fw-bolder">販売ステータス</p>
+                <% if @item.is_active == true %>
+                    <p class="now_on_sale"><%= "販売中" %></p>
+                <% else %>
+                    <p class="sold_out"><%=  "販売停止中" %></p>
+                <% end %>
+            </div>
+        </div>
+</div>
+
+<div style="text-align: center">
+                <%= link_to '編集する', edit_admin_item_path(@item.id),  class: "btn btn-success pl-4 pr-4 mt-2" %>
+</div>

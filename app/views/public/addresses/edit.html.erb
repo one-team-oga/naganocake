@@ -1,0 +1,26 @@
+<div class="page_title mb-3 pl-3 pr-3">
+    配送先編集
+</div>
+<div class="error-message">
+    <% if @address.errors.any? %>
+        <%= @address.errors.count %>件のエラーメッセージが発生しました
+          <ul>
+            <% @address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+            <% end %>
+          </ul>
+    <% end %>
+</div>
+
+<div class="container ml-5 mt-3">
+    <%= form_with model: @address, url:address_path, method: :patch, local: true do |f| %>
+        <%= f.label :postal_code, "郵便番号（ハイフンなし）", style: "width: 250px" %>
+        <%= f.number_field :postal_code %></br>
+        <%= f.label :address, "住所", style: "width: 250px" %>
+        <%= f.text_field :address, :size=>"50" %></br>
+        <%= f.hidden_field :customer_id, value: @customer.id %>
+        <%= f.label :name, "宛名", style: "width: 250px" %>
+        <%= f.text_field :name %>
+        <%= f.submit '更新内容を保存', class: "btn btn-success address-success-btn" %>
+    <% end %>
+</div>

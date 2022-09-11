@@ -1,0 +1,40 @@
+<%= render "public/shared/links" %>
+<div class="container">
+  <div class="login mb-3">
+    <div class="font_title pr-3 pl-3">
+        ログイン
+    </div>
+  </div>
+
+  <div class="login_message">
+    <div class="pb-0 pr-2 pl-2">会員の方はこちらからログイン</div>
+  </div>
+</div>
+
+　<div style="text-align: center" style="width:600px;">
+    <%= form_with model: @customer, url: session_path(resource_name) do |f| %>
+      <div class="form-group mt-3">
+        <%= f.label :email, "メールアドレス　　  " %>
+        <%= f.email_field :email, :size=>"40", autofocus: true, autocomplete: "email", class: "ml-4" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "パスワード　　　　  " %>
+        <%= f.password_field :password, :size=>"40", autocomplete: "current-password", class: "ml-4" %>
+      </div>
+  </div>
+      <div style="text-align: center"  class="actions">
+        <%= f.submit "　　ログイン　　", class: "btn btn-sm btn-primary mr-5" %>
+      </div>
+    <% end %>
+    
+    
+  <div class="container">
+    <div class="login_message">
+      <div class="pb-0 pr-2 pl-2 ">会員登録がお済みでない方</div>
+    </div>
+  </div>
+
+<div class="sign_in_message">
+  <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください</p>
+</div>
