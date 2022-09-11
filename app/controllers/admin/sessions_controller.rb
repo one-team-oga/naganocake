@@ -5,12 +5,12 @@ class Admin::SessionsController < Devise::SessionsController
   layout 'admin/layouts/application'  #layoutを宣言
   
   def after_sign_in_path_for(resource)
-     '/admin'
+     admin_root_path
   end
 
 
   def after_sign_out_path_for(resource)
-    '/admin/sign_in'
+    admin_session_path
   end
   # GET /resource/sign_in
   # def new
