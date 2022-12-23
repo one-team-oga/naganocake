@@ -1,13 +1,7 @@
 class Public::ItemsController < ApplicationController
   layout "public/layouts/application"  # layoutを宣言
   before_action :redirect_root, except: [ :index, :show]
-  def search
-    if params[:name].present?
-      @items = Item.where("name LIKE ?", "%#{params[:name]}%")
-    else
-      @items = Item.none
-    end
-  end
+  
 
   def index
     @genres = Genre.all

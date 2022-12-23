@@ -12,4 +12,12 @@ class Item < ApplicationRecord
   def add_tax_price
     (self.price * 1.10).floor
   end
+  
+  def search
+    if params[:name].present?
+      @items = Item.where("name LIKE ?", "%#{params[:name]}%")
+    else
+      @items = Item.none
+    end
+  end
 end
