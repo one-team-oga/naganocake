@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  layout 'public/layouts/application'  #layoutを宣言
+  layout "public/layouts/application"  # layoutを宣言
   def show
     @customer = current_customer
   end
@@ -7,7 +7,7 @@ class Public::CustomersController < ApplicationController
   def edit
     @customer = current_customer
   end
-  
+
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -16,10 +16,10 @@ class Public::CustomersController < ApplicationController
       render :edit
     end
   end
-  
+
   def unsubcribe
   end
-  
+
   def withdraw
     @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
@@ -28,9 +28,9 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-  
+
   private
     def customer_params
-      params.require(:customer).permit( :first_name,:last_name, :first_name_kana, :last_name_kana,:email, :postal_code, :address, :telephone_number)
-    end  
+      params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :postal_code, :address, :telephone_number)
+    end
 end
