@@ -4,10 +4,10 @@ class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   layout "admin/layouts/application"  # layoutを宣言
 
+
   def after_sign_in_path_for(resource)
     admin_root_path
   end
-
 
   def after_sign_out_path_for(resource)
     admin_session_path

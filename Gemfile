@@ -42,6 +42,12 @@ group :development do
   gem "listen", "~> 3.3"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-minitest", require: false
+  gem "rubocop-packaging", require: false
+  gem "rubocop-rspec"
 end
 
 group :test do
@@ -70,10 +76,3 @@ gem "pry-byebug", group: :development
 gem "bootstrap5-kaminari-views", "~> 0.0.1"
 
 gem "rails-i18n"
-
-gem "rubocop", require: false
-gem "rubocop-performance", require: false
-gem "rubocop-rails", require: false
-gem "rubocop-minitest", require: false
-gem "rubocop-packaging", require: false
-gem "rubocop-rspec"
